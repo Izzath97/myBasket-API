@@ -3,23 +3,23 @@ package com.dell.my_basket.JwtAuth.Payload.Request;
 public class AuthenticationRequest {
 
 
-    private String username;
+    private String email;
     private String password;
 
     public AuthenticationRequest() {
     }
 
-    public AuthenticationRequest(String username, String password) {
-        this.username = username;
+    public AuthenticationRequest(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
     public String getUsername() {
-        return username;
+        return email;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.email = username;
     }
 
     public String getPassword() {

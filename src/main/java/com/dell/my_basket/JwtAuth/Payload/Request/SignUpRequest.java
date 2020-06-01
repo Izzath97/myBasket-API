@@ -1,38 +1,22 @@
-package com.dell.my_basket.Models;
+package com.dell.my_basket.JwtAuth.Payload.Request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
-@Getter
-@Setter
-@Entity
-public class User {
-    @Id
+public class SignUpRequest {
+    @NotBlank
+    @Size(max = 50)
     @Email
-    @Column(nullable = false,unique = true)
     private String email;
 
     private String name;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @NotBlank
+    @Size(min = 6, max = 40)
     private String password;
 
     private String number;
-
-    public User() {
-    }
-
-    public User(@Email String email, String password, String fullName, String contactNo) {
-        this.email = email;
-        this.password = password;
-        this.name = fullName;
-        this.number = contactNo;
-    }
 
     public String getEmail() {
         return email;
@@ -65,4 +49,12 @@ public class User {
     public void setNumber(String number) {
         this.number = number;
     }
+
+    public SignUpRequest(@NotBlank @Size(max = 50) @Email String email, String name, @NotBlank @Size(min = 6, max = 40) String password, String number) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.number = number;
+    }
+
 }
